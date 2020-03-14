@@ -24,3 +24,6 @@ EN LA PARTE INFERIOR IZQUIERDA SE MUESTRA EN QUE RAMA ESTÁS ACTUALMENTE (VISUAL
   DESDE LA RAMA MASTER:
 -  git merge nombre_rama
 - git pull -> ponerte actualizado
+  una vez en master, hacer un:
+- git push
+  esto para que los cambios que se pasaron con el merge, se añadan a la master.
