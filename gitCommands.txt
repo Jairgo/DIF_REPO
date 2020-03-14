@@ -24,6 +24,3 @@ EN LA PARTE INFERIOR IZQUIERDA SE MUESTRA EN QUE RAMA ESTÁS ACTUALMENTE (VISUAL
   DESDE LA RAMA MASTER:
 -  git merge nombre_rama
 - git pull -> ponerte actualizado
-
-
-
