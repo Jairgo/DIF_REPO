@@ -1,0 +1,29 @@
+COMANDOS DE GIT:
+- git init -> Crea el repositorio de la carpeta del proyecto
+- git add . -> manda al stagin area todos los cambios generados en el proyecto
+- git commit -m 'Mensaje del commit' Crea el commit y sube los cambios del stagin area, al repositorio
+- git remote add origin master https://github.com/Jairgo/DIF_REPO.git -> Añade al stagin area del repositorio en linea
+nuestro repositorio local, [SOLO SE HACE UNA VEZ, AL INICIO]
+- git push -u origin master -> Pasa del stagin area al repositorio, [SOLO AL INICIO DEL PROYECTO]
+- git branch mustra todas las ramas que hay en el repositorio
+- git branch nombre_branch -> Crea la rama que mencionamos, SE TIENE QUE CREAR UNA RAMA DE DESARROLLO, PARA 
+NO TOCAR LA RAMA MASTER, SIEMPRE TRABAJAR LA RAMA DE DESARROLLO, Y LUEGO HACER UN MERGE CON LA RAMA MASTER
+- git checkout nombre_branch -> Cambia a la rama especificada
+YA QUE SE HAYAN ACABADO DE HACER LOS CAMBIOS EN LA RAMA DESARROLLO, SE HACE EL MERGE A LA MASTER, LA RAMA MASTER ES
+LA PRINCIPAL, LA FINAL, LA DE PRODUCCION.
+EN LA PARTE INFERIOR IZQUIERDA SE MUESTRA EN QUE RAMA ESTÁS ACTUALMENTE (VISUAL STUDIO CODE)
+
+**CUANDO ESTAS EN LA RAMA DE DESARROLLO**
+- git add .
+- git commit -m 'este commit será para la rama de desarrollo'
+  por primera vez tienes que hacer esto:
+- git push --set-upstream origin desarrollo
+  De ahi en adelante solo será:
+- git push
+  para hacer el merge:
+  DESDE LA RAMA MASTER:
+-  git merge nombre_rama
+- git pull -> ponerte actualizado
+
+
+
