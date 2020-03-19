@@ -15,31 +15,36 @@
     /** */ $data = mysqli_fetch_array($resultUser, MYSQLI_ASSOC);
     /*** */
 
-
-
     //if(isset($_POST['bandera']) && $_POST['bandera'] == 4){
         $claveIne=$data['ine'];
         $claveCurp=$data['becario_curp'];
         $claveEstudios=$data['identificador_estudios'];
-
+        $cambio=0;
         
         if($_POST['claveIne'] != $claveIne ){
             $claveIne = $_POST['claveIne'];
-            echo($claveIne.' >');
+            $cambio=1;
+            //echo($claveIne.' >');
         }
         if($_POST['claveCurp'] != $claveCurp ){
             $claveCurp = $_POST['claveCurp'];
-            echo($claveCurp.' >');
+            $cambio=1;
+            //echo($claveCurp.' >');
         }
         if($_POST['claveEstudios'] != $claveEstudios ){
             $claveEstudios = $_POST['claveEstudios'];
-            echo($claveEstudios.' >');
+            $cambio=1;
+            //echo($claveEstudios.' >');
         }
-        $q = "UPDATE becarios_registro SET ine = '$claveIne', becario_curp = '$claveCurp', identificador_estudios = '$claveEstudios'
-        WHERE id_becario = $idUsuario";
-    
-        $query = mysqli_query($conexion,$q);                     
-        echo (mysqli_error($conexion)); 
+        if($cambio==1){
+            $q = "UPDATE becarios_registro SET ine = '$claveIne', becario_curp = '$claveCurp', identificador_estudios = '$claveEstudios'
+            WHERE id_becario = $idUsuario";
+        
+            $query = mysqli_query($conexion,$q);                     
+            echo (mysqli_error($conexion));
+            $cambio =0;
+        }
+ 
     //}
 
 

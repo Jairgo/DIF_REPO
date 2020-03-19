@@ -276,16 +276,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php while ($row = mysqli_fetch_row($result)) {?>
+                <?php while ($row = mysqli_fetch_row($result)) {
+
+                     $sqlDocs = "SELECT ruta_ine ,ruta_nacimiento ,ruta_curp,ruta_cv,ruta_estudios,ruta_medico,ruta_penal, ruta_recomendacion,ruta_domicilio,ruta_apoyo, ruta_compromiso,ruta_renuncia FROM becarios_registro WHERE id_becario = '$row[7]'";
+                     $resultDocs = mysqli_query($conexion, $sqlDocs);
+                     $rowDocs = mysqli_fetch_array($resultDocs, MYSQLI_ASSOC);
+
+                     if($rowDocs['ruta_ine'] != NULL && $rowDocs['ruta_nacimiento'] != NULL && $rowDocs['ruta_curp'] != NULL && $rowDocs['ruta_cv'] != NULL && $rowDocs['ruta_estudios'] != NULL && $rowDocs['ruta_medico'] != NULL && $rowDocs['ruta_penal'] != NULL && $rowDocs['ruta_recomendacion'] != NULL && $rowDocs['ruta_domicilio'] != NULL && $rowDocs['ruta_renuncia'] != NULL){
+                        $term = 1;
+                     }else{
+                         $term = 0;
+                     }
+                
+                    ?>
                     <tr>
-                        <?php if($row[0] == 0){ ?>
+                        <?php if($row[0] == 0 or $term == 0){ ?>
                             <td style="text-align:center;background-color:darkorange;color:white">
                                 <small style="color:darkorange;opacity: 0;">A</small>
                                 <?php //echo($row[0]);?><i class="fas fa-clock fa-lg"></i>
                                 <small style="color:darkorange;opacity: 0;">A</small>
                             </td>
                         <?php
-                        }else{?>
+                        }if($row[0] == 1 && $term == 1){?>
                             <td style="text-align:center;background-color:darkgreen;color:white">
                                 <small style="color:darkgreen;opacity: 0;">B</small>
                                 <?php //echo($row[0]);?><i class="fas fa-check fa-lg"></i>

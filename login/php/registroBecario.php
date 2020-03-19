@@ -205,8 +205,8 @@
 
 	if ($entra == 0){
 		$entra = 0;
-		$completo+=10;
-		if($completo >= 37){
+		//$completo+=10;
+		if($completo >= 27){
 			$completo=1;
 		}else{
 			$completo=0;

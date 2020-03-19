@@ -18,6 +18,11 @@
  $resultDocs = mysqli_query($conexion, $sqlDocs);
  $rowDocs = mysqli_fetch_array($resultDocs, MYSQLI_ASSOC);
 
+ if($rowDocs['ruta_ine'] != NULL && $rowDocs['ruta_nacimiento'] != NULL && $rowDocs['ruta_curp'] != NULL && $rowDocs['ruta_cv'] != NULL && $rowDocs['ruta_estudios'] != NULL && $rowDocs['ruta_medico'] != NULL && $rowDocs['ruta_penal'] != NULL && $rowDocs['ruta_recomendacion'] != NULL && $rowDocs['ruta_domicilio'] != NULL && $rowDocs['ruta_renuncia'] != NULL){
+    $term = 1;
+ }else{
+     $term = 0;
+ }
 
  ?>
 
@@ -998,14 +1003,14 @@
                 </div>
                 <div class="tab-pane" id="messages">
                     <?php
-                    if($row['auxiliar'] == 0){?>
+                    if($row['auxiliar'] == 0 or $term == 0){?>
                         <div class="alert alert-warning alert-dismissable">
                             <a class="panel-close close" data-dismiss="alert">×</a> El usuario <strong><?php echo($row['nombre_becario']." " .$row['apellidos_becario']); ?></strong> no ha completado su registro.
                         </div>
                     <?php } ?>
                     <!------>
                     <?php 
-                    if($row['auxiliar'] == 1){?>
+                    if($row['auxiliar'] == 1 && $term == 1){?>
                         <div class="alert alert-success alert-dismissable">
                             <a class="panel-close close" data-dismiss="alert">×</a> El usuario <strong><?php echo($row['nombre_becario']." " .$row['apellidos_becario']); ?></strong> completó su registro exitosamente.
                         </div>

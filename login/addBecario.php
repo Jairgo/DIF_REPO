@@ -1095,7 +1095,7 @@
 							}
 							else{
 								
-								alertify.error(r);
+								alertify.error('Falló al agregar, Código:'+r);
 							}
 						}
 					});

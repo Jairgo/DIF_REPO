@@ -82,6 +82,7 @@ if(isset($_GET['q'])){
     $result = mysqli_query($conexion, $sqlBeca);
     //TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,
  }
+
  ?>
 
 <div class="accordion" id="accordionExample">
