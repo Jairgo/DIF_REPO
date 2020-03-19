@@ -117,6 +117,9 @@
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Información</a>
                 </li>
+                <li class="nav-item">
+                    <a href="" data-target="#down" data-toggle="tab" class="nav-link">Descargas</a>
+                </li>
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
@@ -1281,6 +1284,16 @@
                         </div>
                     </form>
                     
+                </div>
+                <div class="tab-pane" id="down">
+                    <div class="row">
+                        <div class="col">
+                            <label>Descargar carta de renuncia:</label>
+                        </div>
+                        <div class="col">
+                            <a href="../uploads/Carta_Renuncia_Dif.pdf" download class="btn btn-secondary" style="color:white"><i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

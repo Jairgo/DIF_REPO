@@ -70,9 +70,9 @@ if(isset($_GET['q'])){
 
         $yaString = implode(",",$sqlWhere);
         $sinComas = str_replace(',',' ',$yaString); 
-        echo($sinComas);
+        //echo($sinComas);
         $sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,sexo, TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,telefono_becario,fecha_inicio,id_becario FROM becarios_registro WHERE estado = '0' $sinComas ORDER by fecha_inicio";
-        echo($sqlBeca);
+        //echo($sqlBeca);
         $result = mysqli_query($conexion, $sqlBeca);
     }
  }else{
