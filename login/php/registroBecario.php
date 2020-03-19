@@ -1,6 +1,7 @@
 <?php 
 	session_start();
-	
+	//Contador 1: 27 o más
+	//contador 2: 10 exactamente
 	require_once "conexion.php";
 	$conexion=conexion();
 		/*---------------DATOS OBLIGATORIOS-----------------*/
@@ -14,8 +15,8 @@
 		/* */ $agregador=$_SESSION['user'];				 /* */
 		/* */ $completo=7;								 /* */
 		/*^^^^^^^^^^^^^^^DATOS OBLIGATORIOS^^^^^^^^^^^^^^^^^*/
-		/*---------------DATOS POSIBLES NULOS----------------------------------------------*/
-		/* */ if (isset($_POST['civilBecario']) && $_POST['civilBecario']!='null') {								/* */
+	/*---------------DATOS POSIBLES NULOS----------------------------------------------*/
+			/* */ if (isset($_POST['civilBecario']) && $_POST['civilBecario']!='null') {								/* */
 				$civilBeca=$_POST['civilBecario'];										
 				$completo+=1;
 			}else{
@@ -37,14 +38,14 @@
 				$adscripDirBeca=$_POST['adscripDirBecario'];						
 				$completo+=1;
 			}else{
-			$adscripDirBeca='';
-		}																		
+				$adscripDirBeca='';
+			}																		
 		/* */if (isset($_POST['adscripAreaBecario']) && $_POST['adscripAreaBecario']!='null') {									/* */
 				$adscripAreaBeca=$_POST['adscripAreaBecario'];						
 				$completo+=1;
 			}else{
-			$adscripAreaBeca='';
-		}																			
+				$adscripAreaBeca='';
+			}																			
 		/* */ if (isset($_POST['hijosBecario']) && $_POST['hijosBecario']!=0) {										/* */
 				$hijosBeca=$_POST['hijosBecario'];									
 				$completo+=1;	
@@ -54,7 +55,7 @@
 		/* */if (isset($_POST['discapacidadBecario'])) {							
 				$discapacidadBeca=$_POST['discapacidadBecario'];
 				$completo+=1;						
-			 }																	
+			}																	
 		/* */if (isset($_POST['enfermedadBecario'])) {								
 				$enfermedadBeca=$_POST['enfermedadBecario'];						
 				$completo+=1;
@@ -75,19 +76,19 @@
 				$sueldoIniBeca=$_POST['sueldoIniBecario'];							
 				$completo+=1;
 			}else{
-			$sueldoIniBeca='';
-		}																		
+				$sueldoIniBeca='';
+			}																			
 		/* */ if (isset($_POST['fechaIngBecario']) && $_POST['fechaIngBecario']!='') {									/* */
 				$fechaIngBeca=$_POST['fechaIngBecario'];							
 			}else{
-			$fechaIngBeca='';
-		}
+				$fechaIngBeca='';
+			}
 		/* */ if (isset($_POST['jefeBecario']) && $_POST['jefeBecario']!='') {										/* */
 				$jefeBeca=$_POST['jefeBecario'];									
 				$completo+=1;
 			}else{
-			$jefeBeca='';
-		}																		
+				$jefeBeca='';
+			}																			
 		/* */ if (isset($_POST['funcionBecario'])) {									
 				$funcionBeca=$_POST['funcionBecario'];								
 				$completo+=1;
@@ -100,8 +101,8 @@
 				$numTarjetaBeca=$_POST['numTarjetaBecario'];							
 				$completo+=1;
 		/* */ }else{
-			$numTarjetaBeca='';
-		}																	
+				$numTarjetaBeca='';
+			}																	
 		/* */ if (isset($_POST['direccionBecario'])) {								
 				$direccionBeca=$_POST['direccionBecario'];						
 				$completo+=1;
@@ -125,24 +126,29 @@
 		/* */ if (isset($_POST['ineClaveBecario'])) {								
 				$ineClaveBeca=$_POST['ineClaveBecario'];							
 				$completo+=1;
-			}																	
-		/* */ if (isset($_POST['curpClaveBecario']) && $_POST['curpClaveBecario'] !='') {
-				$curpClaveBeca=$_POST['curpClaveBecario'];							
+			}else{
+				$ineClaveBeca='';
+			}	
+		/* */ if (isset($_POST['curpClaveBecario'])) {								
+				$curpClaveBeca=$_POST['curpClaveBecario'];								
 				$completo+=1;
-			} else{																	
-					$curpClaveBeca=1;													
-			}																			
+			}else{
+				$curpClaveBeca='';																
+			}																																	
 		/* */ if (isset($_POST['claveEstudiosBecario'])) {								
 				$claveEstudiosBeca=$_POST['claveEstudiosBecario'];						
 				$completo+=1;
-		/* */ }																				
-		/*^^^^^^^^^^^^^^^^^^^^^^^^^^DATOS POSIBLES NULOS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-		/*--------------------------RUTA DE ARCHIVOS----------------------------------------*/
+			}else{																	
+				$claveEstudiosBeca='';													
+			}																			
+	/*^^^^^^^^^^^^^^^^^^^^^^^^^^DATOS POSIBLES NULOS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+	/*--------------------------RUTA DE ARCHIVOS----------------------------------------*/
 		/* */if (isset($_POST['fileIne'])) {								
 			
 		/* */}	
 
-		/*^^^^^^^^^^^^^^^^^^^^^^^^^^RUTA DE ARCHIVOS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+	/*^^^^^^^^^^^^^^^^^^^^^^^^^^RUTA DE ARCHIVOS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+	/*--------------------------COMPROBACION DE REPETIDOS-------------------------------*/
 		$sqlmail="SELECT email_becario FROM becarios_registro WHERE email_becario='$emailBeca'";
 		$resultadomail=mysqli_query($conexion,$sqlmail);
 
@@ -175,12 +181,13 @@
 				$entra =1;
 			}
 		}
-		if($curpClaveBeca!=1){
+
+		if($curpClaveBeca!=''){
 			$sqlcurp="SELECT becario_curp FROM becarios_registro WHERE becario_curp='$curpClaveBeca'";
 			$resultadocurp=mysqli_query($conexion,$sqlcurp);
 
 			if(mysqli_num_rows($resultadocurp) > 0 && $entra == 0){
-				echo 6;//curp repetido
+				echo 5;//ine repetido
 				$entra =1;
 			}
 		}
@@ -194,35 +201,20 @@
 				$entra =1;
 			}
 		}
+	/*^^^^^^^^^^^^^^^^^^^^^^^^^^COMPROBACION DE REPETIDOS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
-
-		if ($entra == 0 && $curpClaveBeca !=1){
-			$entra = 0;
-			$completo+=10;
-			if($completo >= 37){
-				$completo=1;
-			}else{
-				$completo=0;
-			}
-			$sql="INSERT into becarios_registro (nombre_becario,apellidos_becario,email_becario,telefono_becario,rfc_becario,fecha_nacimiento,sexo,fecha_inicio,fecha_maxima,auxiliar,agregado_por,estado_civil,escolaridad,tipo_apoyo,direccion_adscripcion,area_adscripcion,num_hijos,discapacidad,enfermedad,alergias,nombre_familiares,num_familiares,sueldo_inicial,fecha_ingreso,jefe_becario,funcion_becario,horario,num_tarjeta,direccion,municipio,colonia,codigo_postal,ine,becario_curp,identificador_estudios)
-			values ('$nombreBeca','$apellidosBeca','$emailBeca','$telBeca','$rfcBeca','$edadBeca','$sexoBeca',NOW(), DATE_ADD(NOW(), INTERVAL 10 DAY),$completo,'$agregador','$civilBeca','$escolaridadBeca','$apoyoBeca','$adscripDirBeca','$adscripAreaBeca','$hijosBeca','$discapacidadBeca','$enfermedadBeca','$alergiaBeca','$nombreFamEmer','$numFamEmer','$sueldoIniBeca','$fechaIngBeca','$jefeBeca','$funcionBeca','$horarioBeca','$numTarjetaBeca','$direccionBeca','$municipioBeca','$coloniaBeca','$zipBeca','$ineClaveBeca','$curpClaveBeca','$claveEstudiosBeca')";
-
-			echo $result=mysqli_query($conexion,$sql);
-			unset($completo);
-
-		}if($entra == 0 && $curpClaveBeca ==1){
-			$entra = 0;
-			$completo+=10;
-			if($completo >= 37){
-				$completo=1;
-			}else{
-				$completo=0;
-			}
-			unset($curpClaveBeca);
-			$sql="INSERT into becarios_registro (nombre_becario,apellidos_becario,email_becario,telefono_becario,rfc_becario,fecha_nacimiento,sexo,fecha_inicio,fecha_maxima,auxiliar,agregado_por,estado_civil,escolaridad,tipo_apoyo,direccion_adscripcion,area_adscripcion,num_hijos,discapacidad,enfermedad,alergias,nombre_familiares,num_familiares,sueldo_inicial,fecha_ingreso,jefe_becario,funcion_becario,horario,num_tarjeta,direccion,municipio,colonia,codigo_postal,ine,identificador_estudios)
-			values ('$nombreBeca','$apellidosBeca','$emailBeca','$telBeca','$rfcBeca','$edadBeca','$sexoBeca',NOW(), DATE_ADD(NOW(), INTERVAL 10 DAY),$completo,'$agregador','$civilBeca','$escolaridadBeca','$apoyoBeca','$adscripDirBeca','$adscripAreaBeca','$hijosBeca','$discapacidadBeca','$enfermedadBeca','$alergiaBeca','$nombreFamEmer','$numFamEmer','$sueldoIniBeca','$fechaIngBeca','$jefeBeca','$funcionBeca','$horarioBeca','$numTarjetaBeca','$direccionBeca','$municipioBeca','$coloniaBeca','$zipBeca','$ineClaveBeca','$claveEstudiosBeca')";
-
-			echo $result=mysqli_query($conexion,$sql);
-			unset($completo);
+	if ($entra == 0){
+		$entra = 0;
+		$completo+=10;
+		if($completo >= 37){
+			$completo=1;
+		}else{
+			$completo=0;
 		}
+		$sql="INSERT into becarios_registro (nombre_becario,apellidos_becario,email_becario,telefono_becario,rfc_becario,fecha_nacimiento,sexo,fecha_inicio,fecha_maxima,auxiliar,agregado_por,estado_civil,escolaridad,tipo_apoyo,direccion_adscripcion,area_adscripcion,num_hijos,discapacidad,enfermedad,alergias,nombre_familiares,num_familiares,sueldo_inicial,fecha_ingreso,jefe_becario,funcion_becario,horario,num_tarjeta,direccion,municipio,colonia,codigo_postal,ine,becario_curp,identificador_estudios)
+		values ('$nombreBeca','$apellidosBeca','$emailBeca','$telBeca','$rfcBeca','$edadBeca','$sexoBeca',NOW(), DATE_ADD(NOW(), INTERVAL 10 DAY),$completo,'$agregador','$civilBeca','$escolaridadBeca','$apoyoBeca','$adscripDirBeca','$adscripAreaBeca','$hijosBeca','$discapacidadBeca','$enfermedadBeca','$alergiaBeca','$nombreFamEmer','$numFamEmer','$sueldoIniBeca','$fechaIngBeca','$jefeBeca','$funcionBeca','$horarioBeca','$numTarjetaBeca','$direccionBeca','$municipioBeca','$coloniaBeca','$zipBeca','$ineClaveBeca','$curpClaveBeca','$claveEstudiosBeca')";
+
+		echo $result=mysqli_query($conexion,$sql);
+		unset($completo);
+	}
  ?>

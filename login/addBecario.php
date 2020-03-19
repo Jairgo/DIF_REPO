@@ -144,6 +144,9 @@
 		label{
 			font-weight:bold;
 		}
+		.fa-asterisk{
+			color: #FB8888;
+		}
 	</style>
   </head>
 <body >
@@ -155,31 +158,31 @@
 			<div class="form-row">
 				<!----contenido--->
 				<div class="form-group col-md-4">
-					<label>Nombre</label>
+					<label>Nombre <i class="fas fa-asterisk fa-xs"></i></label>
 					<input placeholder="Nombre(s)" type="text" class="form-control input-sm" id="nombreBecario" name="" autofocus>
 				</div>
 				<div class="form-group col-md-4">
-					<label>Apellidos</label>
+					<label>Apellidos <i class="fas fa-asterisk fa-xs"></i></label>
 					<input placeholder="Ambos apellidos" type="text" class="form-control input-sm" id="apellidosBecario" name="">
 				</div>
 				<div class="form-group col-md-4">
-					<label>Número de telefono</label>
+					<label>Número de telefono <i class="fas fa-asterisk fa-xs"></i></label>
 					<input placeholder="Número a 10 digitos" type="number" class="form-control input-sm" id="telefonoBecario" name="" required>
 				</div>
 				<div class="form-group col-md-4">
-					<label>Correo electrónico</label>
+					<label>Correo electrónico <i class="fas fa-asterisk fa-xs"></i></label>
 					<input placeholder="ejemplo@ejemplo.com" type="email" class="form-control input-sm" id="emailBecario" name="">
 				</div>
 				<div class="form-group col-md-4">
-					<label>RFC</label>
+					<label>RFC <i class="fas fa-asterisk fa-xs"></i></label>
 					<input maxlength="13" placeholder="Dato a 13 caracteres" type="text" class="form-control input-sm" id="rfcBecario" name="">
 				</div>
 				<div class="form-group col-md-4">
-					<label for="edadBecario">Fecha de nacimiento</label>
+					<label for="edadBecario">Fecha de nacimiento <i class="fas fa-asterisk fa-xs"></i></label>
 					<input placeholder="Ingrese fecha" type="date" class="form-control" id="edadBecario" name="">
 				</div>
 				<div class="form-group col-md-4">
-					<label for="sexoBecario">Sexo</label>
+					<label for="sexoBecario">Sexo <i class="fas fa-asterisk fa-xs"></i></label>
 					<select id="sexoBecario" class="form-control">
 						<option selected value="Eliga" >Eliga...</option>
 						<option value="Femenino">Femenino</option>
@@ -1091,7 +1094,8 @@
 								window.setInterval("reFresh()",1000);
 							}
 							else{
-								alertify.error("Falló al agregar, Código:"+ r);
+								
+								alertify.error(r);
 							}
 						}
 					});
