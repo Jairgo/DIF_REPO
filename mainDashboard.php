@@ -62,7 +62,26 @@
         $(document).ready(function() {
             var table = $('#example').DataTable( {
                 lengthChange: false,
-                buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+                buttons: [
+                {
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [':visible' ]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    'colvis']
             } );
         
             table.buttons().container()
@@ -291,17 +310,18 @@
                     ?>
                     <tr>
                         <?php if($row[0] == 0 or $term == 0){ ?>
-                            <td style="text-align:center;background-color:darkorange;color:white">
-                                <small style="color:darkorange;opacity: 0;">A</small>
-                                <?php //echo($row[0]);?><i class="fas fa-clock fa-lg"></i>
-                                <small style="color:darkorange;opacity: 0;">A</small>
+                            <td style="background-color:darkorange;color:white">
+                                <div id="P" style="text-align:center;">
+                                    <?php //echo($row[0]);?><i class="fas fa-clock fa-lg"></i>
+                                </div>
                             </td>
                         <?php
                         }if($row[0] == 1 && $term == 1){?>
-                            <td style="text-align:center;background-color:darkgreen;color:white">
-                                <small style="color:darkgreen;opacity: 0;">B</small>
-                                <?php //echo($row[0]);?><i class="fas fa-check fa-lg"></i>
-                                <small style="color:darkgreen;opacity: 0;">B</small>
+                            <td style="background-color:darkgreen;color:white">
+                                <div id="T" style="text-align:center;">
+                                    <?php //echo($row[0]);?>
+                                    <i class="fas fa-check fa-lg"></i>
+                                </div>
                             </td>
                         <?php } ?>
                         <td><?php echo($row[1]);?></td>

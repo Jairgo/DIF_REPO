@@ -55,7 +55,7 @@
 						<div class="form-group">
 							<!--<input type="submit" class="btnSubmit" id="registrarNuevo" value="Registrar" />-->
 							<button type="submit" class="btnSubmit" id="registrarNuevo" value="Registrar" style="color:white"><i class="fas fa-plus-circle"></i> Registrar</button>
-							<a href="../mainDashboard.php" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+							<a href="javascript:history.back()" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
 						</div>
 						<br><small>Al hacer click en Registrar confirma que el usuario registrado está de acuerdo y manejará la información de forma confidencial.</small>
                     </form>

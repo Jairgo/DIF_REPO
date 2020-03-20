@@ -76,14 +76,14 @@ if(isset($_GET['q'])){
         $yaString = implode(",",$sqlWhere);
         $sinComas = str_replace(',',' ',$yaString); 
         //echo($sinComas);
-        $sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,sexo, TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,telefono_becario,fecha_inicio,id_becario FROM becarios_registro WHERE estado = '0' $sinComas ORDER by fecha_inicio";
+        $sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,sexo, TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,telefono_becario,fecha_inicio,id_becario FROM becarios_registro WHERE estado = '1' $sinComas ORDER by fecha_inicio";
         //echo($sqlBeca);
         $result = mysqli_query($conexion, $sqlBeca);
     }
  }else{
      //no hay busqueda y solo muestra todo
     //$sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,email_becario,telefono_becario,fecha_inicio,id_becario FROM becarios_registro ORDER by fecha_inicio";
-    $sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,sexo, TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,telefono_becario,fecha_inicio,id_becario FROM becarios_registro WHERE estado = '0' ORDER by fecha_inicio";
+    $sqlBeca = "SELECT auxiliar,nombre_becario,apellidos_becario,sexo, TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,telefono_becario,fecha_inicio,id_becario FROM becarios_registro WHERE estado = '1' ORDER by fecha_inicio";
     $result = mysqli_query($conexion, $sqlBeca);
     //TIMESTAMPDIFF(YEAR, fecha_nacimiento,NOW()) AS restaEdad,
  }

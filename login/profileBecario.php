@@ -1305,7 +1305,7 @@
         
 
         <div class="col-lg-4 order-lg-1 text-center">
-            <a role="button" type="button" class="btn btn-info" href="../mainDashboard.php"><i class="fas fa-arrow-circle-left"></i> Regresar</a>  
+            <a role="button" type="button" class="btn btn-info" href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i> Regresar</a>  
             </br></br>
             <img style="width:200px; height:180px;" src="../uploads/imgProfile/<?php if(isset($row['ruta_imagen'])) {echo($row['ruta_imagen']);} else{ echo('avatar.png');} ?>" class="mx-auto img-fluid img-circle d-block" alt="avatar"><!--../uploads/imgProfile/bg-1.jpg--->
             <h6 class="mt-2"><?php echo($row['nombre_becario']." ".$row['apellidos_becario']); ?></h6>

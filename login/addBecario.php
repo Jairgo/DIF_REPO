@@ -906,7 +906,7 @@
 					<div class="form-group">
 						<!--<a type="submit" class="btnSubmit" id="registrarNuevo" value="Registrar" style="color:white"><i class="fas fa-plus-circle"></i> Registrar</a>-->
 						<a href="#selectUsuario" type="button" class="btnSubmit" id="registrarNuevo" style="color:white"><i class="fas fa-plus-circle"></i> Registrar</a>
-						<a href="../mainDashboard.php" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+						<a href="javascript:history.back()" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
 					</div>
 				</div>
 				<!----contenido--->
@@ -977,7 +977,7 @@
 					<div class="form-group"><br>
 						<!--<a type="submit" class="btnSubmit" id="registrarNuevo" value="Registrar" style="color:white"><i class="fas fa-plus-circle"></i> Registrar</a>-->
 						<button class="btnSubmit" id="registrarNuevoFiles" style="color:white"><i class="fas fa-file-upload"></i> Subir archivos</button>
-						<a href="../mainDashboard.php" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+						<a href="javascript:history.back()" type="input" class="btnSubmit2" value="Return"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
 						<br><small>Todos los datos aquí registrados son de uso confidencial.</small>
 					</div>
 				</div>
