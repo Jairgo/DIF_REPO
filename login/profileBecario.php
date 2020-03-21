@@ -108,6 +108,8 @@
     <?php
         //Navigation -->
         require_once "../nav3.php";
+        require_once 'comparativa.php';
+
         //require_once "buttons.php";
     ?>
     <div class="row my-2">
@@ -983,7 +985,6 @@
                                         </div>
                                         </div>
                                         <!-----collapse group--->
-
                                     <div class="form-group"><br>
                                         <label for="comentarios"><b>Agregar o editar comentarios</b></label>
                                         <textarea value="<?php echo($row['comentarios_becario']); ?>" placeholder="Inserte comentarios adicionales de ser necesarios" class="form-control" id="comentarios" rows="3"><?php echo($row['comentarios_becario']); ?></textarea>
@@ -1017,12 +1018,23 @@
                     <?php } ?>
                     <!------>
                     <table class="table table-hover table-striped">
-                        <tbody>   
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">Faltan <?php echo($row['resta2']); ?> Dias</span> Fecha limite de entrega de documentos
-                                </td>
-                            </tr>  
+                        <tbody>  
+                        <?php 
+                            if($row['resta2'] <= 0){
+                                if($row['auxiliar'] == 0 or $term == 0){?>
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a class="panel-close close" data-dismiss="alert">×</a> Se ha terminado el tiempo límite de entrega de documentos, lleva <?php echo(($row['resta2']*-1)) ?> días de retraso.
+                                    </div>
+                                <?php }
+                            } if($row['resta2'] >= 0) { 
+                                if($row['auxiliar'] == 0 or $term == 0){ ?>
+                                    <tr>
+                                        <td>
+                                            <span class="float-right font-weight-bold">Faltan <?php echo($row['resta2']); ?> Dias</span> Fecha limite de entrega de documentos
+                                        </td>
+                                    </tr> 
+                                <?php }
+                            }  ?>
                             <!------>
                             <?php
                             if($rowDocs['ruta_ine'] == NULL){?>
